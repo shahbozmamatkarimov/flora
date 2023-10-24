@@ -1,0 +1,46 @@
+{
+  "language": "Язык",
+  "uz": "Уз",
+  "ru": "Ру",
+  "en": "Ан",
+  "about": "O нас",
+  "payment_and_delivery": "Оплата и доставка",
+  "quality_assurance": "Гарантия качества",
+  "contact": "Контакты",
+  "basket": "Корзина",
+  "login": "Войти",
+  "navbar": {
+    "address": "Укaжитe адрес доставки",
+    "show": "Показать",
+    "search": "Цветы и букеты",
+    "all": "Все",
+    "bouquets": "Букеты",
+    "present": "Подарки",
+    "the_brides_bouquet": "Букет невесты",
+    "compositions": "Композиции",
+    "top10": "ТОП 10",
+    "presents": "Сегодняшние",
+    "watched": "Вы смотрели",
+    "orders": "Мои заказы",
+    "favorites": "Избранное"
+  },
+  "home": {
+    "whom": "Kому",
+    "occasion": "Повод",
+    "color": "Цвет",
+    "price": "Цена",
+    "bright_bouquets": "Яркие букетики",
+    "roses": "Розы Pink O'Hara",
+    "maxrove": "Махровые эустомы",
+    "show_more": "Показать больше",
+    "sum": "сум"
+  },
+  "contacts": {
+    "home": "Главная",
+    "contact": "Контакты",
+    "description": "Мы работаем 24 часа в сутки, без выходных",
+    "address": "Юридический адрес",
+    "phone": "Номер телефона",
+    "email": "Электронная почта"
+  }
+}

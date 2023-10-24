@@ -1,0 +1,47 @@
+{
+  "language": "Til",
+  "uz": "Uz",
+  "ru": "Ru",
+  "en": "In",
+  "about": "Haqida",
+  "payment_and_delivery": "To'lov va yetkazib berish",
+  "quality_assurance": "Kafolatlangan sifat",
+  "contact": "Bog'lanish",
+  "basket": "Savatcha",
+  "login": "Kirish",
+  "navbar": {
+    "address": "Manzilni kiriting",
+    "show": "Ko'rsatish",
+    "search": "Gullar va guldastalar",
+    "all": "Hammasi",
+    "bouquets": "Guldastalar",
+    "present": "Hozirgi",
+    "the_brides_bouquet": "Kelinlar guldastalari",
+    "compositions": "Kompozitsiyalar",
+    "top10": "TOP 10",
+    "presents": "Bugungilar",
+    "watched": "Ko'rilganlar",
+    "orders": "Buyurtmalar",
+    "favorites": "Sevimlilar"
+  },
+  "home": {
+    "whom": "Kimga",
+    "occasion": "Voqealar",
+    "color": "Ranglar",
+    "price": "Narxlar",
+    "description1": "Bugungi to'planganlar. Guldastalar yetkazib berishga tayyor.",
+    "bright_bouquets": "Yorqin guldastalar",
+    "roses": "Pushti O'Hara atirgullari",
+    "maxrove": "Makrovye eustoma",
+    "show_more": "Ko'proq ko'rish",
+    "sum": "so'm"
+  },
+  "contacts": {
+    "home": "Asosiy",
+    "contact": "Bog'lanish",
+    "description": "Biz kuniga 24 soat, haftada etti kun ishlaymiz",
+    "address": "Yuridik manzil",
+    "phone": "Telefon raqami",
+    "email": "Elektron pochta"
+  }
+}
