@@ -19,10 +19,9 @@ export const useProductsStore = defineStore("products", () => {
     openEditModal: false,
   });
 
-  const allProducts = computed(() => state.products);
-  const showProductById = computed(() => state.showProduct);
-
+  
   function getAllProducts() {
+    console.log(baseUrl);
     axios.get(baseUrl + '/category')
       .then((res) => {
         console.log(res.data);
@@ -85,6 +84,9 @@ export const useProductsStore = defineStore("products", () => {
         console.log(err);
       });
   }
+
+  const allProducts = computed(() => state.products);
+  const showProductById = computed(() => state.showProduct);
 
   return { state, getAllProducts, getOneProduct, allProducts, showProductById, getById };
 });

@@ -70,7 +70,7 @@ onBeforeMount(() => {
     store.data = 8;
   }
   store.width = window.innerWidth;
-  initFlowbite();
+  // initFlowbite();
 });
 </script>
 
