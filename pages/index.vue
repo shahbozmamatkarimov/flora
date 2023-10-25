@@ -5,14 +5,12 @@
 </template>
 
 <script setup>
-import {useProductsStore} from "@/store"
+import { useProductsStore } from "@/store";
 
-const useProducts = useProductsStore()
-onMounted(()=>{
-  useProducts.getAllProducts()
-})
+const useProducts = useProductsStore();
+onMounted(() => {
+  useProducts.getAllProducts();
+});
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
