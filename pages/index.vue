@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ useProducts.store.products }}
+    {{ useProducts.state.products }}
   </div>
 </template>
 
