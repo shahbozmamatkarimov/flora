@@ -7,7 +7,7 @@
       <Navbar />
     </nav>
     <div class="overflow-hidden max-w-screen container mx-auto">
-      <section
+      <!-- <section
         v-if="$router.currentRoute.value.fullPath == '/'"
         class="container mx-auto xl:px-28 md:px-10 px-5 pb-5"
       >
@@ -20,13 +20,21 @@
               ref="select"
               v-model:value="value1"
               :placeholder="$t('home.whom')"
-              @focus="focus"
               @change="handleChange"
             >
               <a-select-option value="jack">Jack</a-select-option>
               <a-select-option value="lucy">Lucy</a-select-option>
               <a-select-option value="Yiminghe">yiminghe</a-select-option>
             </a-select>
+            <el-select v-model="value" class="m-2" placeholder="Select">
+              <el-option
+                class="max-w-fit"
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
             <img class="-ml-[22px]" src="../assets/svg/selectIcon.svg" alt="" />
           </div>
           <div class="flex items-center">
@@ -35,7 +43,6 @@
               ref="select"
               v-model:value="value1"
               :placeholder="$t('home.occasion')"
-              @focus="focus"
               @change="handleChange"
             >
               <a-select-option value="jack">Jack</a-select-option>
@@ -50,7 +57,6 @@
               ref="select"
               v-model:value="value1"
               :placeholder="$t('home.color')"
-              @focus="focus"
               @change="handleChange"
             >
               <a-select-option value="jack">Jack</a-select-option>
@@ -65,7 +71,6 @@
               ref="select"
               v-model:value="value1"
               :placeholder="$t('home.price')"
-              @focus="focus"
               @change="handleChange"
             >
               <a-select-option value="jack">Jack</a-select-option>
@@ -75,13 +80,43 @@
             <img class="-ml-[22px]" src="../assets/svg/selectIcon.svg" alt="" />
           </div>
         </div>
-      </section>
+      </section> -->
       <slot />
     </div>
     <Footer class="md:block hidden" />
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const options = [
+  {
+    value: 'Option1',
+    label: 'Option1',
+  },
+  {
+    value: 'Option2',
+    label: 'Option2',
+  },
+  {
+    value: 'Option3',
+    label: 'Option3',
+  },
+  {
+    value: 'Option4',
+    label: 'Option4',
+  },
+  {
+    value: 'Option5',
+    label: 'Option5',
+  },
+]
+
+const value1 = ref([1,2,3,4,5,6,7]);
+const value = ref("Whom");
+
+function handleChange() {
+  console.log("hello world");
+}
+</script>
 
 <style lang="scss" scoped></style>

@@ -16,10 +16,6 @@
   font-family: "HarmoniaSansProCyr", sans-serif;
 }
 
-/* .quanta{
-    font-family: 'QuantaGroteskPro', sans-serif;
-} */
-
 input:focus,
 textarea:focus {
   border: 2px solid #5c0099 !important;
@@ -38,17 +34,19 @@ select {
   height: 0;
 }
 
-.ant-select-selector {
-  border: none !important;
-  background: transparent !important;
-  outline: none;
-  box-shadow: none !important;
-}
-
-.ant-select-selector span {
-    color: #242424 !important;
-}
-
-:where(.css-dev-only-do-not-override-kqecok).ant-select .ant-select-arrow {
+.el-dialog__headerbtn, .el-dialog__header {
   display: none;
+}
+
+.el-dialog__body{
+  padding: 30px !important;
+}
+
+.el-dialog {
+  border-radius: 20px !important;
+  width: 560px !important;
+}
+
+.example-showcase .el-loading-mask {
+  z-index: 999;
 }

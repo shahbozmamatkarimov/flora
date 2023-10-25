@@ -16,10 +16,8 @@
             Все категории
           </li>
           <li>/</li>
-          <li
-            class="ml-1 font-medium text-gray-500 md:ml-2 dark:text-gray-400"
-          >
-            Букет из "9 кустовых хризантем с эвкалиптом
+          <li class="ml-1 font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+            {{ useProduct?.state.getById?.name }}
           </li>
         </ol>
       </nav>
@@ -33,19 +31,36 @@
 
     <section class="flex md:flex-row flex-col gap-10 w-full">
       <!---------------------- carousel -------------------------->
-
-      <a-carousel
-        class="xl:w-[30rem] md:w-[25rem] w-full"
-        arrows
-        dots-class="slick-dots slick-thumb"
-      >
-        <template #customPaging="props">
-          <img class="h-full w-full object-cover rounded-md cursor-pointer" :src="getImgUrl(props.i)" />
-        </template>
-        <div class="py-2" v-for="item in 4" :key="item">
-          <img class="rounded-xl border h-full w-full object-cover" :src="getImgUrl(item - 1)" />
+      <div class="max-w-[524px] w-full overflow-hidden">
+        <div
+          v-if="useProduct?.state.getById"
+          class="flex max-w-[524px] bg-white rounded-xl duration-1000"
+          id="carouselMain"
+        >
+          <img
+            v-for="i in useProduct?.state.getById?.image"
+            :key="i"
+            class="min-w-[524px] h-[524px] bg-white object-contain rounded-xl border border-gray-200 object-center"
+            :src="baseUrlImage + i.image"
+            alt=""
+          />
         </div>
-      </a-carousel>
+        <div
+          v-if="useProduct?.state.getById?.image?.length > 1"
+          id="carousel"
+          class="grid grid-cols-5 gap-[10px] mt-[10px]"
+        >
+          <img
+            v-for="(i, index) in useProduct?.state.getById?.image"
+            @click="store.slideStep = index + 1"
+            :key="index"
+            :class="store.slideStep == index + 1 ? 'border-black p-1' : ''"
+            class="h-[110px] bg-white w-full cursor-pointer duration-500 object-contain border border-gray-200 rounded-lg"
+            :src="baseUrlImage + i.image"
+            alt=""
+          />
+        </div>
+      </div>
 
       <!---------------------- carousel end -------------------------->
 
@@ -62,7 +77,7 @@
             </p>
           </li>
           <li class="lg:text-2xl text-lg font-semibold">
-            Букет из "9 кустовых хризантем с эвкалиптом 😍
+            {{ useProduct?.state.getById?.name }}
           </li>
           <li>
             <p class="flex items-center gap-2">
@@ -81,7 +96,7 @@
         <ul class="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 pt-2">
           <li>
             <h2>Цена:</h2>
-            <p class="font-bold">800 000 uzs</p>
+            <p class="font-bold">{{ useProduct.getById?.price }} uzs</p>
           </li>
           <li>
             <h2>Количество:</h2>
@@ -119,7 +134,8 @@
           >
             Добавить в корзину
           </button>
-          <button @click="$router.push('/order')"
+          <button
+            @click="$router.push('/order')"
             class="md:text-md text-sm sm:h-16 h-12 text-[#5C0099] active:opacity-50 rounded-xl font-semibold border border-[#5C0099]"
           >
             Купить в 1 клик
@@ -168,7 +184,11 @@
                 <span class="sm:inline hidden">сум</span>
               </p>
               <div class="flex items-center sm:gap-3 gap-1">
-                <img class="cursor-pointer" src="../../assets/svg/heart.svg" alt="" />
+                <img
+                  class="cursor-pointer"
+                  src="../../assets/svg/heart.svg"
+                  alt=""
+                />
                 <img
                   class="cursor-pointer sm:h-5 sm:w-5 h-3 w-3"
                   src="../../assets/svg/cart.svg"
@@ -181,9 +201,7 @@
       </div>
     </section>
     <section class="pb-20">
-      <h1 class="sm:text-3xl pb-2 text-md">
-        Просмотренные товары
-      </h1>
+      <h1 class="sm:text-3xl pb-2 text-md">Просмотренные товары</h1>
       <div class="flex overflow-hidden overflow-x-auto cards gap-5">
         <div
           v-for="i in 10"
@@ -199,7 +217,7 @@
             <h5
               class="mb-2 sm:text-xl text-sm text-[#1F9D6D] tracking-tight font-medium"
             >
-              Фрида 
+              Фрида
             </h5>
             <div class="flex justify-between items-center">
               <p class="sm:text-md text-xs whitespace-nowrap">
@@ -207,7 +225,11 @@
                 <span class="sm:inline hidden">сум</span>
               </p>
               <div class="flex items-center sm:gap-3 gap-1">
-                <img class="cursor-pointer" src="../../assets/svg/heart.svg" alt="" />
+                <img
+                  class="cursor-pointer"
+                  src="../../assets/svg/heart.svg"
+                  alt=""
+                />
 
                 <img
                   class="cursor-pointer sm:h-5 sm:w-5 h-3 w-3"
@@ -223,56 +245,39 @@
   </main>
 </template>
 
-<script>
-import { defineComponent } from "vue";
-const baseUrl =
-  "https://raw.githubusercontent.com/vueComponent/ant-design-vue/main/components/carousel/demo/";
+<script setup>
+// import { useProductsStore, useHistoryStore } from "@/store";
 
-export default defineComponent({
-  setup() {
-    const getImgUrl = (i) => {
-      return `${baseUrl}abstract0${i + 1}.jpg`;
-    };
-    return {
-      getImgUrl,
-    };
-  },
+// const useProduct = useProductsStore();
+// const useHistory = useHistoryStore();
+
+const runtimeConfig = useRuntimeConfig();
+const baseUrl = runtimeConfig.public.baseURL;
+const baseUrlImage = ref(runtimeConfig.public.baseURL?.slice(0, -3));
+
+const router = useRouter();
+const store = reactive({
+  slideStep: 1,
+  product_id: "",
+});
+
+watch(
+  () => store.slideStep,
+  () => {
+    document.getElementById("carouselMain").style.transform = `translateX(-${
+      store.slideStep * 100 - 100
+    }%)`;
+  }
+);
+
+onMounted(() => {
+  store.product_id = +router.currentRoute.value.params.slug;
+  useProduct.getById(store.product_id);
+  useHistory.addToWatched(store.product_id)
 });
 </script>
 
 <style lang="scss" scoped>
-/* For demo */
-:deep(.slick-dots) {
-  position: relative;
-  height: auto;
-}
-:deep(.slick-slide img) {
-  display: block;
-  margin: auto;
-  width: 30rem;
-  height: 30rem;
-}
-
-:deep(.slick-arrow) {
-  display: none !important;
-}
-:deep(.slick-thumb) {
-  bottom: 0;
-}
-:deep(.slick-thumb li) {
-  width: 5rem;
-  height: 6rem;
-}
-:deep(.slick-thumb li img) {
-  width: 100%;
-  height: 100%;
-  filter: grayscale(50%);
-  display: block;
-}
-:deep .slick-thumb li.slick-active img {
-  filter: grayscale(0%);
-}
-
 input:focus {
   outline: none !important;
   outline: 0 !important;
@@ -280,38 +285,5 @@ input:focus {
 
 .ul {
   list-style-type: disc;
-}
-
-@media (min-width: 0) {
-  :deep(.slick-slide img) {
-    width: 100%;
-  }
-}
-@media (min-width: 0) {
-  :deep(.slick-slide img) {
-    height: 20rem;
-  }
-}
-@media (min-width: 400px) {
-  :deep(.slick-slide img) {
-    height: 24rem;
-  }
-}
-@media (min-width: 450px) {
-  :deep(.slick-slide img) {
-    height: 28rem;
-  }
-}
-@media (min-width: 550px) {
-  :deep(.slick-slide img) {
-    height: 32rem;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 12px) {
-  :deep(.slick-slide img) {
-    width: 25rem;
-    height: 25rem;
-  }
 }
 </style>

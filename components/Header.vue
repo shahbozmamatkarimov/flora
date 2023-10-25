@@ -51,7 +51,7 @@
                   {{ $t("basket") }}
                 </p>
               </div>
-              <div
+              <div @click="authStore.store.loginModal = true"
                 class="sm:flex hidden items-center gap-2 xl:mr-0 mr-10 hover:text-gray-200 cursor-pointer"
               >
                 <img src="../assets/svg/user.svg" alt="" />
@@ -191,6 +191,9 @@
 </template>
 
 <script setup>
+// import {useAuthStore} from "@/store"
+
+// const authStore = useAuthStore();
 const store = reactive({
   toggle: true,
   lang: false,
